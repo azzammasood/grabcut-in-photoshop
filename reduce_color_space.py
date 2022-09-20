@@ -13,7 +13,7 @@ import os
 import time
 
 def main():
-    target_image = AutoRough(image_path = r'C:\Users\Administrator\Desktop\multi_grabcut\data\Original.jpg',
+    target_image = AutoRough(image_path = r'C:\Users\Administrator\Desktop\multi_grabcut\Original.jpg',
                              numberOfColors = 64,
                              pixelCountPercentageThreshold = 0.055,
                              maximumDelta = 20,
@@ -49,7 +49,7 @@ class AutoRough:
                                          dither=1,
                                          palette = 1)
 
-        Dithered_image.save("C:/Users/Administrator/Desktop/multi_grabcut/data/Dithered_Image.png")
+        Dithered_image.save("C:/Users/Administrator/Desktop/multi_grabcut/Dithered_Image.png")
 
         # Print original palette and dithered palette
         Original_image = Original_image.convert(mode='P', dither=0)
@@ -493,7 +493,7 @@ class AutoRough:
         rounded_palette = self.flatten(np.around(quantizedColors).astype(np.uint8))
         gif_image.putpalette(rounded_palette)
 
-        gif_image.save("C:/Users/Administrator/Desktop/multi_grabcut/data/Reduced_Color_Image.png")
+        gif_image.save("C:/Users/Administrator/Desktop/multi_grabcut/Reduced_Color_Image.png")
 
         im2 = rounded_palette
 

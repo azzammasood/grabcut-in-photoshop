@@ -66,7 +66,7 @@ function export_layer(layer_name, output_name)
         var idDIDr = charIDToTypeID( "DIDr" );
         desc2114.putBoolean( idDIDr, true );
         var idIn = charIDToTypeID( "In  " );
-        desc2114.putPath( idIn, new File( "C:\\Users\\Administrator\\Desktop\\multi_grabcut\\data" ) );
+        desc2114.putPath( idIn, new File( "C:\\Users\\Administrator\\Desktop\\multi_grabcut\\" ) );
         var idovFN = charIDToTypeID( "ovFN" );
         desc2114.putString( idovFN, output_name );
         var idFmt = charIDToTypeID( "Fmt " );
@@ -328,7 +328,7 @@ function open_output(name1)
     var idIdnt = charIDToTypeID( "Idnt" );
     desc789.putInteger( idIdnt, 6 );
     var idnull = charIDToTypeID( "null" );
-    desc789.putPath( idnull, new File( "C:\\Users\\Administrator\\Desktop\\multi_grabcut\\data\\" + name1 ) );
+    desc789.putPath( idnull, new File( "C:\\Users\\Administrator\\Desktop\\multi_grabcut\\" + name1 ) );
 
     var idFTcs = charIDToTypeID( "FTcs" );
     var idQCSt = charIDToTypeID( "QCSt" );
@@ -379,7 +379,7 @@ function export_layer_as_jpg(input_layer, output_layer)
         var idDIDr = charIDToTypeID( "DIDr" );
         desc506.putBoolean( idDIDr, true );
         var idIn = charIDToTypeID( "In  " );
-        desc506.putPath( idIn, new File( "C:\\Users\\Administrator\\Desktop\\multi_grabcut\\data" ) );
+        desc506.putPath( idIn, new File( "C:\\Users\\Administrator\\Desktop\\multi_grabcut\\" ) );
         var idovFN = charIDToTypeID( "ovFN" );
         desc506.putString( idovFN, output_layer );
         var idFmt = charIDToTypeID( "Fmt " );

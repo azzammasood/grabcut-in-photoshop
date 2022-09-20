@@ -10,7 +10,7 @@ if (shouldReduceColorSpace == true)
 {
     export_layer_as_jpg(input_layer, "Original.jpg")
 
-    app.system(' python "C:\\Users\\Administrator\\Desktop\\multi_grabcut\\Reduce Color Space in Python\\main.py" ')
+    app.system(' python "C:\\Users\\Administrator\\Desktop\\multi_grabcut\\reduce_color_space.py" ')
     rename_existing_layer_if_exists("Reduced_Color_Image")
     open_output("Reduced_Color_Image.png")
     export_layer("Reduced_Color_Image", "input.png")
@@ -38,7 +38,6 @@ function execute_grabcut()
     app.system('wsl')
     rename_existing_layer_if_exists("output_rgb")
     open_output("output_rgb.png")
-    // app.system(' cd /mnt/c/Users/DELL/Documents/Quixel/multi_grabcut & python main.py ')
 }
 
 function export_layer(layer_name, output_name)

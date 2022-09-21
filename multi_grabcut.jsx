@@ -8,12 +8,12 @@ input_layer = get_name_of_input_layer()
 var shouldReduceColorSpace = confirm("Reduce color space of input albedo?");
 if (shouldReduceColorSpace == true)
 {
-    export_layer_as_jpg(input_layer, "Original.jpg")
+    export_layer_as_jpg(input_layer, "Original.jpg")    // Export input image to be read by the Reduce_Color_Image.py code
 
     app.system(' python "C:\\Users\\Administrator\\Desktop\\multi_grabcut\\Reduce Color Space in Python\\reduce_color_space.py" ')
     rename_existing_layer_if_exists("Reduced_Color_Image")
     open_output("Reduced_Color_Image.png")
-    export_layer_as_exr("Reduced_Color_Image", "input.png")
+    export_layer_as_exr("Reduced_Color_Image", "input") // If color space was reduced, export reduced image as input.exr
 }
 
 var shouldContinue = confirm("Continue with execution of Grabcut?")
@@ -23,7 +23,7 @@ if (shouldContinue == true)
     scribbles_layer = get_name_of_scribble_layer()
     if (shouldReduceColorSpace == false)
     {
-        export_layer_as_exr(input_layer, "input.png")
+        export_layer_as_exr(input_layer, "input")   // If color space was not reduced, export input layer as input.exr
     }
     execute_grabcut()
 }
@@ -34,14 +34,13 @@ else
 
 function execute_grabcut()
 {
-    export_layer(scribbles_layer, "scribbles.png")
+    export_layer_as_png(scribbles_layer, "scribbles.png")   // Export scribbles layer as png
     app.system('wsl')
     rename_existing_layer_if_exists("output_rgb")
     open_output("output_rgb.png")
-    // app.system(' cd /mnt/c/Users/DELL/Documents/Quixel/multi_grabcut & python main.py ')
 }
 
-function export_layer(layer_name, output_name)
+function export_layer_as_png(layer_name, output_name)
 {
     // Select scribbles layer
     selectLayer(layer_name)

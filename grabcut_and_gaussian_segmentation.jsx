@@ -73,11 +73,13 @@ function execute()
 
 function reduceColorSpace()
 {
+    // Path to run python file to reduce color space 
     app.system('python C:\\Users\\Administrator\\Desktop\\multi_grabcut\\reduce_color_space.py')
 }
 
 function executeGaussianSegmentation(colorReduction)
 {
+    // Path to rewrite script file. It contains the command to run grabcut's python file. This script is run by the linux subsystem
     writeTextFile("C:\\Users\\Administrator\\Desktop\\multi_grabcut\\commands.sh", 'python main.py --image data/input.exr  --scribbles data/scribbles.png --output data/gaussian_segmentation'+colorReduction+'.png')
     app.system('wsl')
 }
@@ -101,6 +103,7 @@ function writeTextFile( filePath, textContent, dontCreateFile )
 
 function executeGrabcut(colorReduction)
 {
+    // Path to rewrite script file. It contains the command to run grabcut's python file. This script is run by the linux subsystem
     writeTextFile("C:\\Users\\Administrator\\Desktop\\multi_grabcut\\commands.sh", 'python main.py --image data/input.exr  --scribbles data/scribbles.png --output data/grabcut'+colorReduction+'.png --resolve_type pixel --use_grabcut True')
     app.system('wsl')
 }
@@ -250,6 +253,7 @@ function openOutput(name1)
     var idIdnt = charIDToTypeID( "Idnt" );
     desc789.putInteger( idIdnt, 6 );
     var idnull = charIDToTypeID( "null" );
+    // Path to open output in photoshop
     desc789.putPath( idnull, new File( "C:\\Users\\Administrator\\Desktop\\multi_grabcut\\data\\" + name1 ) );
 
     var idFTcs = charIDToTypeID( "FTcs" );
@@ -314,6 +318,7 @@ function exportLayerJPG(inputLayer, output_layer)
         var idDIDr = charIDToTypeID( "DIDr" );
         desc506.putBoolean( idDIDr, true );
         var idIn = charIDToTypeID( "In  " );
+        // Path to save input image as JPG so it can have its color space reduced
         desc506.putPath( idIn, new File( "C:\\Users\\Administrator\\Desktop\\multi_grabcut\\data\\" ) );
         var idovFN = charIDToTypeID( "ovFN" );
         desc506.putString( idovFN, output_layer );
@@ -594,6 +599,8 @@ function exportLayerEXR(layerName, name_of_file)
     var idEXRf = charIDToTypeID( "EXRf" );
     desc705.putObject( idAs, idEXRf, desc706 );
     var idIn = charIDToTypeID( "In  " );
+    
+    // Path to save input image as exr
     desc705.putPath( idIn, new File( "C:\\Users\\Administrator\\Desktop\\multi_grabcut\\data\\" + name_of_file + ".exr" ) );
     var idDocI = charIDToTypeID( "DocI" );
     desc705.putInteger( idDocI, 365 );
@@ -651,6 +658,8 @@ function exportLayerPNG(layerName, output_name)
         var idDIDr = charIDToTypeID( "DIDr" );
         desc2114.putBoolean( idDIDr, true );
         var idIn = charIDToTypeID( "In  " );
+    
+        // Path to save scribbles layer as png
         desc2114.putPath( idIn, new File( "C:\\Users\\Administrator\\Desktop\\multi_grabcut\\data\\" ) );
         var idovFN = charIDToTypeID( "ovFN" );
         desc2114.putString( idovFN, output_name );

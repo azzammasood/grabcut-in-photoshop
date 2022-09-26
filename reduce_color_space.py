@@ -13,7 +13,7 @@ import os
 import time
 
 def main():
-    target_image = AutoRough(image_path = r'C:\Users\Administrator\Desktop\multi_grabcut\data\Original.jpg',
+    target_image = AutoRough(image_path = r"C:\Users\Administrator\Desktop\multi_grabcut\data\Original.jpg",
                              numberOfColors = 64,
                              pixelCountPercentageThreshold = 0.055,
                              maximumDelta = 20,
